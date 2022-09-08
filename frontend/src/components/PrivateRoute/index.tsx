@@ -4,11 +4,12 @@ import { Navigate } from 'react-router-dom'
 
 type Props = {
   children: JSX.Element;
+  page?: string;
 }
 
 function PrivateRoute(props: Props) {
-  const { children } = props;
-  const page = children.type.prototype.constructor.name;
+  const { children, page } = props;
+  //const page = children.type.prototype.constructor.name;
   const { token } = useContext(UserContext) as UserContextType;
 
   console.log(page);

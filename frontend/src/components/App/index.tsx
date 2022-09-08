@@ -22,12 +22,12 @@ function App() {
         <Routes>
 
           <Route path='/sign-up' element={ 
-            <PrivateRoute>
+            <PrivateRoute page='SignUp'>
               <SignUp /> 
             </PrivateRoute>
           }/>
           <Route path='/sign-in' element={ 
-            <PrivateRoute>
+            <PrivateRoute page='SignIn'>
               <SignIn /> 
             </PrivateRoute>
           }/>
