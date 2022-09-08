@@ -31,7 +31,7 @@ function SignUp() {
       toast.success('Sign up successfully');
       setTimeout(() => navigate('/sign-in'), 3000);
     } catch (err: AxiosError | any ) {
-      const errorMessage = err.response.data || 'Please, try again later'
+      const errorMessage = err.response.data.error || err.response.data || 'Please, try again later'
       toast.error(errorMessage);
     }
     setTimeout(() => setDisabled(false), 2000);
