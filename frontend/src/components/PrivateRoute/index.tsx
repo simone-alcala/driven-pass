@@ -9,11 +9,8 @@ type Props = {
 
 function PrivateRoute(props: Props) {
   const { children, page } = props;
-  //const page = children.type.prototype.constructor.name;
   const { token } = useContext(UserContext) as UserContextType;
 
-  console.log(page);
-  console.log(token);
   if (token && (page === 'SignIn' || page === 'SignUp')) {
     return <Navigate to='/' />
   }
