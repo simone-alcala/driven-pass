@@ -1,13 +1,13 @@
-import React, { useState, FormEvent, ChangeEvent } from 'react';
+import React, { useState, FormEvent, ChangeEvent, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AxiosError } from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Logo from './../../components/Logo';
 import Api from '../../services/api/api';
 
-import { Main, Form, Label, Input, Button, Hr, Span } from './style';
+import Logo from './../../components/Logo';
+import { Main, Form, Label, Input, Button } from './style';
+import { AxiosError } from 'axios';
 
 type FormData = {
   email: string;
@@ -15,19 +15,20 @@ type FormData = {
 }
 
 function SignUp() {
-  
+ 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({ email: '', password: '' });
   const [disabled, setDisabled] = useState(false);
-
-  const navigate = useNavigate();
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     setDisabled(true);
     event.preventDefault();
+
     const { email, password } = formData;
+
     try {
       await Api.signUp({ email, password });
-      toast.success('Usuário criado com sucesso');
+      toast.success('Sign up successfully');
       setTimeout(() => navigate('/sign-in'), 3000);
     } catch (err: AxiosError | any ) {
       const errorMessage = err.response.data || 'Please, try again later'
@@ -43,10 +44,12 @@ function SignUp() {
     });     
   }
 
-  return (
+  return (    
     <Main>
       <ToastContainer />
+
       <Logo size='large'/>
+      
       <Form onSubmit={handleSubmit}>
 
         <Label htmlFor='email'>Usuário (e-mail)</Label>
@@ -55,16 +58,16 @@ function SignUp() {
         <Label htmlFor='password'>Senha</Label>
         <Input type='password' id='password' name='password' required onChange={handleChange}/>
         
-        <Button type='submit' disabled={disabled} >Acessar</Button>
+        <Button type='submit' disabled={disabled} color='#9BFBB0' margin='25px'>Criar</Button>
 
       </Form>
-      <Hr />
+
       <Link to='/sign-in'>
-        <Span>Primeiro acesso? Crie sua conta!</Span>
+        <Button type='button' color='#FB9B9B' margin='10px'>&lt; Voltar</Button>
       </Link>
+
     </Main>
   );
 }
 
 export default SignUp;
-

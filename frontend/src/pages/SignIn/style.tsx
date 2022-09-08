@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-interface IProps{
-  color?: string;
-  margin?: string;
-}
-
 export const Main = styled.main `
   width: 100%;
   height: 100vh;
@@ -39,18 +34,30 @@ export const Input = styled.input `
 
 export const Label = styled.label `
   color: black;
-  margin-top: 15px;
-  margin-bottom: 10px;
+  margin: 10px 0 ;
 `;
 
-export const Button = styled.button<IProps> `
+export const Button = styled.button `
   width: 280px;
   height: 40px;  
-  background: ${props => props.color};
-  border: 3px solid ${props => props.color};
+  background: #9BFBB0;
+  border: 3px solid #9BFBB0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   cursor: pointer;
-  margin-top: ${props => props.margin};
+  margin-top: 35px;
   font-size: 18px;
+`;
+
+export const Hr = styled.hr `
+  width: 300px;
+  color: #DBDBDB;
+  margin-top: 40px;
+  margin-bottom: 35px;
+`;
+
+export const Span = styled.span `
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
 `;
