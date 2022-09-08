@@ -1,0 +1,39 @@
+type ErrorTypes = 'conflic' | 'not_found' | 'unauthorized' | 'wrong_schema' | 'bad_request';
+
+enum StatusCode {
+  bad_request = 400,
+  unauthorized = 401,
+  not_found = 404,
+  conflic = 409,
+  wrong_schema = 422
+}
+
+export interface AppError {
+  type: ErrorTypes;
+  message: string;
+  statusCode: StatusCode 
+}
+export function isAppError(error: any) {
+  return error.statusCode !== undefined;
+}
+
+export function badRequest(message?: string): AppError {
+  return { type: 'bad_request', message, statusCode: StatusCode.bad_request };
+}
+
+export function unauthorized(message?: string): AppError {
+  return { type: 'unauthorized', message, statusCode: StatusCode.unauthorized };
+}
+
+export function notFound(message?: string): AppError {
+  return { type: 'not_found', message, statusCode: StatusCode.not_found };
+}
+
+export function conflic(message?: string): AppError {
+  return { type: 'conflic', message, statusCode: StatusCode.conflic };
+}
+
+export function wrongSchema(message?: string): AppError {
+  return { type: 'wrong_schema', message, statusCode: StatusCode.wrong_schema };
+}
+
