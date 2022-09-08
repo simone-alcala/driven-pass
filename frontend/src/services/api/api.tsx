@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const dev = 'http://localhost:5000'
+const prod = 'https://driven-pass-new.herokuapp.com'
+
 const axiosConfig = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: prod,
   timeout: 3000
 });
 
