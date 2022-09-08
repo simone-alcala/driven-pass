@@ -6,7 +6,7 @@ import * as DevServer from 'webpack-dev-server';
 const config: Configuration = {  
   entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
     clean: true,
     publicPath: '/'
