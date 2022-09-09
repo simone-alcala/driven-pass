@@ -11,9 +11,79 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  password String
+  id          Int @id @default(autoincrement())
+  email       String @unique
+  password    String
+
+  credentials Credential[]
+  safeNotes   SafeNote[]
+  networks    Network[]
+  cards       Card[]
 
   @@map("users")
+}
+
+model Credential {
+  id        Int @id @default(autoincrement())
+  title     String
+  url       String
+  username  String
+  password  String
+
+  userId    Int
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([title, userId])
+
+  @@map("credentials")
+}
+
+model SafeNote {
+  id        Int @id @default(autoincrement())
+  title     String
+  note      String
+
+  userId    Int
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([title, userId])
+
+  @@map("safeNotes")
+}
+
+model Network {
+  id        Int @id @default(autoincrement())
+  title     String
+  name      String
+  password  String
+
+  userId    Int
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("network")
+}
+
+model Card {
+  id              Int @id @default(autoincrement())
+  title           String
+  number          String
+  holderName      String
+  securityCode    String
+  expirationDate  String
+  password        String
+  virtual         Boolean @default(false)
+  type            CardTypes @default(BOTH)
+
+  userId          Int
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([title, userId])
+ 
+  @@map("cards")
+}
+
+enum CardTypes {
+  CREDIT
+  DEBIT
+  BOTH
 }
