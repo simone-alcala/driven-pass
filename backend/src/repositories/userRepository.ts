@@ -1,12 +1,12 @@
-import prisma from './../database/config.js';
+import prisma from '../database/config';
 
-import { CreateUserData, UpdateUserData } from './../services/usersService.js';
+import * as types from '../types/userType';
 
-export async function insert(data: CreateUserData) {
+export async function insert(data: types.CreateUserData) {
   return prisma.user.create({ data });  
 }
 
-export async function update(id: number, data: UpdateUserData) {
+export async function update(id: number, data: types.UpdateUserData) {
   return prisma.user.update({ where: { id }, data });  
 }
 

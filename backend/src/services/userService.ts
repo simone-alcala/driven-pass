@@ -4,13 +4,12 @@ import jwt from 'jsonwebtoken';
 dotenv.config();
 
 import { User } from '@prisma/client';
-import * as repository from './../repositories/usersRepository.js';
-import * as throwError from './../utils/errorUtils.js';
+import * as repository from '../repositories/userRepository';
+import * as throwError from '../utils/errorUtils';
+import * as types from '../types/userType';
 
-export type CreateUserData = Omit<User, 'id'>;
-export type UpdateUserData = Partial<CreateUserData>;
 
-const JWT_KEY = process.env.JWT_KEY;
+const JWT_KEY = process.env.JWT_KEY || '';
 
 export function validateToken(token: string, message: string) {
   let result = null;
@@ -39,11 +38,11 @@ export async function findUserAndFail(email: string) {
   }
 }
 
-export async function findUserOrFail(email: string, id: number, message: string) {
-  let result: User = null;
+export async function findUserOrFail(email: string | null, id: number | null, message: string) {
+  let result: User | null = null;
   if (email) {
     result = await getUserByEmail(email);
-  } else {
+  } else if (id) {
     result = await getUserById(id);
   }
   if (!result) {

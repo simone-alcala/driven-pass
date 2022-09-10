@@ -1,7 +1,6 @@
 {
   "name": "driven-pass",
   "version": "1.0.0",
-  "type": "module",
   "description": "Driven Pass - Backend",
   "main": "server.js",
   "scripts": {

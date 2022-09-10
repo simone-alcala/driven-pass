@@ -10,7 +10,7 @@ enum StatusCode {
 
 export interface AppError {
   type: ErrorTypes;
-  message: string;
+  message?: string;
   statusCode: StatusCode 
 }
 export function isAppError(error: any) {

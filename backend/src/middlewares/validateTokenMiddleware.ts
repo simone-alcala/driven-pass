@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { unauthorized } from './../utils/errorUtils.js';
-import { validateToken as isValidToken } from './../services/usersService';
+import { unauthorized } from './../utils/errorUtils';
+import { validateToken as isValidToken } from '../services/userService';
 
 export default async function validateToken(req: Request, res: Response, next: NextFunction) {
   const errorMessage = 'Invalid token';
