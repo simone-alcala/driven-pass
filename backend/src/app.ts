@@ -7,8 +7,7 @@ import errorHandler from './middlewares/errorHandlerMiddleware';
 
 const app = express();
 //app.use(cors());
-app.use(cors( { origin: 'https://driven-pass.vercel.app' } ));
-//app.options('*', cors());
+app.use(cors( { origin: 'http://localhost:3000' } ));
 app.use(json());
 app.use(router);
 app.use(errorHandler);
