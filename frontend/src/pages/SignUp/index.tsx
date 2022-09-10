@@ -7,7 +7,7 @@ import Api from '../../services/api/api';
 
 import Logo from './../../components/Logo';
 import { Main, Form, Label, Input, Button } from './style';
-import { AxiosError } from 'axios';
+import HandleError from '../../components/HandleError';
 
 type FormData = {
   email: string;
@@ -23,19 +23,14 @@ function SignUp() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     setDisabled(true);
     event.preventDefault();
-
-    const { email, password } = formData;
-
     try {
-      await Api.signUp({ email, password });
+      await Api.signUp(formData);
       toast.success('Sign up successfully');
-      setTimeout(() => navigate('/sign-in'), 3000);
-    } catch (err: AxiosError | any ) {
-      console.log(err);
-      const errorMessage = err.message || err.response.data.error || err.response.data || 'Please, try again later';
-      toast.error(errorMessage);
+      setTimeout(() => navigate('/sign-in'), 2000);
+    } catch (err: any ) {
+      toast.error(HandleError({ errorObject: err }));
+      setTimeout(() => { setDisabled(false) }, 2000);
     }
-    setTimeout(() => setDisabled(false), 2000);
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
