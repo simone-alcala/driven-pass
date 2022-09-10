@@ -33,7 +33,7 @@ function SignIn() {
         signIn(result.data.token);
       }, 2000);
     } catch (err: AxiosError | any ) {
-      const errorMessage = err.response.data.error || err.response.data || 'Please, try again later'
+      const errorMessage = err.message || err.response.data.error || err.response.data || 'Please, try again later';
       toast.error(errorMessage);
     }
     setTimeout(() => setDisabled(false), 2000);

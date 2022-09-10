@@ -27,13 +27,12 @@ function SignUp() {
     const { email, password } = formData;
 
     try {
-      const result = await Api.signUp({ email, password });
-      console.log(result);
+      await Api.signUp({ email, password });
       toast.success('Sign up successfully');
       setTimeout(() => navigate('/sign-in'), 3000);
     } catch (err: AxiosError | any ) {
       console.log(err);
-      const errorMessage = err.response.data.error || err.response.data || 'Please, try again later'
+      const errorMessage = err.message || err.response.data.error || err.response.data || 'Please, try again later';
       toast.error(errorMessage);
     }
     setTimeout(() => setDisabled(false), 2000);

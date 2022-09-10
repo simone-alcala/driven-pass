@@ -5,11 +5,7 @@ const prod = 'https://driven-pass-new.herokuapp.com'
 
 const axiosConfig = axios.create({
   baseURL: prod,
-  timeout: 3000,
-  headers: {
-    "Content-Type": "application/json",
-    'Access-Control-Allow-Origin': '*',
-  }
+  timeout: 3000
 });
 
 type Authentication = {
