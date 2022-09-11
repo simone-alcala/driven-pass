@@ -16,6 +16,8 @@ import PrivateRoute from '../PrivateRoute';
 
 import './../../assets/styles/reset.css';
 import ShowCredential from '../../pages/ShowCredential';
+import ShowSafeNote from '../../pages/ShowSafeNote';
+import AddSafeNote from '../../pages/AddSafeNote';
 
 function App() {
   return (
@@ -38,16 +40,29 @@ function App() {
               <Home /> 
             </PrivateRoute>
           }/>
+
           <Route path='/safenotes' element={ 
             <PrivateRoute>
               <SafeNotes /> 
             </PrivateRoute>
           }/>
+          <Route path='/safenotes/:id' element={ 
+            <PrivateRoute>
+              <ShowSafeNote /> 
+            </PrivateRoute>}
+          />
+          <Route path='/safenote' element={ 
+            <PrivateRoute>
+              <AddSafeNote /> 
+            </PrivateRoute>}
+          />
+
           <Route path='/networks' element={ 
             <PrivateRoute>
               <Network /> 
             </PrivateRoute>
           }/>
+
           <Route path='/credentials' element={ 
             <PrivateRoute>
               <Credentials /> 
@@ -63,6 +78,7 @@ function App() {
               <AddCredential /> 
             </PrivateRoute>}
           />
+
           <Route path='/cards' element={ 
             <PrivateRoute>
               <Cards /> 
