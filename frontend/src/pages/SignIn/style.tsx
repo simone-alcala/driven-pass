@@ -9,7 +9,7 @@ export const Main = styled.main `
   flex-direction: column;
   font-family: 'Recursive', sans-serif;
   font-size: 18px;
-  color: #000;
+  color: #222222;
 `;
 
 export const Form = styled.form `

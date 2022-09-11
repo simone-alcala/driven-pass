@@ -25,6 +25,7 @@ export const Div = styled.div `
   display: flex;
   justify-content: left;
   align-items: center;  
+  cursor: pointer;
 `;
 
 export const Icon = styled.div `

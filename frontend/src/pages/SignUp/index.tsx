@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Api from '../../services/api/api';
+import AuthApi from '../../services/api/authApi';
 
 import Logo from './../../components/Logo';
 import { Main, Form, Label, Input, Button } from './style';
@@ -24,7 +24,7 @@ function SignUp() {
     setDisabled(true);
     event.preventDefault();
     try {
-      await Api.signUp(formData);
+      await AuthApi.signUp(formData);
       toast.success('Sign up successfully');
       setTimeout(() => navigate('/sign-in'), 2000);
     } catch (err: any ) {

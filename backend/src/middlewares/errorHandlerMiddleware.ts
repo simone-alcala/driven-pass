@@ -15,5 +15,5 @@ export default function errorHandler(error: AppError | any, req: Request, res: R
     return res.status(error.statusCode).send(error.message);
   }
 
-  return res.status(500);
+  return res.sendStatus(500);
 }

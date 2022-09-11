@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, ChangeEvent,useContext } from 'react';
+import React, { useState, FormEvent, ChangeEvent, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { UserContext, UserContextType } from './../../contexts/UserContext';
 import HandleError from '../../components/HandleError';
 import Logo from './../../components/Logo';
-import Api from '../../services/api/api';
+import AuthApi from '../../services/api/authApi';
 
 import { Main, Form, Label, Input, Button, Hr, Span } from './style';
 
@@ -26,7 +26,7 @@ function SignIn() {
     setDisabled(true);
     event.preventDefault();
     try {
-      const result = await Api.signIn(formData);    
+      const result = await AuthApi.signIn(formData);    
       toast.success('Loading...');      
       signIn(result.data.token);
     } catch (err: any) {

@@ -8,7 +8,7 @@ type Props = {
   icon?: string;
   link?: string;
   title?: string;
-  quantity?: string;
+  quantity?: number;
 }
 
 function HomeItem(props: Props) {

@@ -1,29 +1,17 @@
-import axios from 'axios';
+import axios,  { AxiosRequestConfig } from 'axios';
 
 const dev = 'http://localhost:5000'
 const prod = 'https://driven-pass-new.herokuapp.com'
 
-const axiosConfig = axios.create({
-  baseURL: prod,
-  timeout: 3000
+export const axiosConfig = axios.create({
+  baseURL: dev,
+  timeout: 3000,
 });
 
-type Authentication = {
-  email: string;
-  password: string;
+export function getBearerToken(token: string){
+  return { 
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  }
 }
-
-async function signUp(data: Authentication) {
-  return await axiosConfig.post('/sign-up', data);
-}
-
-async function signIn(data: Authentication) {
-  return await axiosConfig.post('/sign-in', data);
-}
-
-const Api = {
-  signIn,
-  signUp,
-};
-
-export default Api;

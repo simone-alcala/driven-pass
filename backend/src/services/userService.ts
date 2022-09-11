@@ -5,22 +5,21 @@ dotenv.config();
 
 import { User } from '@prisma/client';
 import * as repository from '../repositories/userRepository';
+import * as credentials from '../services/credentialService';
 import * as throwError from '../utils/errorUtils';
-import * as types from '../types/userType';
-
 
 const JWT_KEY = process.env.JWT_KEY || '';
 
 export function validateToken(token: string, message: string) {
-  let result = null;
+  let result : { userId: number } | undefined;
   jwt.verify(token, JWT_KEY, function(err, decoded) {
     if (err) {
       throw throwError.unauthorized(message);
     } else {
-      result = decoded;
+      result = decoded as { userId: number };
     }
   });
-  return result;
+  return result?.userId;
 }
 
 async function getUserByEmail(email: string) {
@@ -49,4 +48,18 @@ export async function findUserOrFail(email: string | null, id: number | null, me
     throw throwError.notFound(message);
   }
   return result;
+}
+
+export async function findAllDataByUserId(userId: number) {
+  if(isNaN(userId)) {
+    throw throwError.unauthorized('Invalid user');
+  }
+  const totalCredentials = await credentials.totalByUserId(userId);
+  return {
+    userId,
+    totalCredentials,
+    totalCards: 0,
+    totalNetworks: 0,
+    totalSafeNotes: 0
+  }
 }

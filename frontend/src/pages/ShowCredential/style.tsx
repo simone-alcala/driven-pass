@@ -26,3 +26,9 @@ export const Title = styled.span `
   font-weight: 700;
   margin-bottom: 5px;
 `;
+
+export const Data = styled.span `
+  width: 280px;
+  margin-bottom: 15px;
+  text-align: left;
+`;

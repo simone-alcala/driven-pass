@@ -13,6 +13,7 @@ export const Container = styled.footer `
   position: fixed;
   bottom: 0;
   z-index: 1;
+  background-color: #FFF;
 `;
 
 export const Main = styled.div `
@@ -42,4 +43,10 @@ export const Span = styled.span `
   color: #000;
   text-decoration: underline;
   cursor: pointer;
+`;
+
+export const Button = styled.button `
+  all: unset;
+  border-radius: 50%;
+  width: min-content;
 `;

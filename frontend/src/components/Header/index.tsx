@@ -17,6 +17,10 @@ function Header(props: Props) {
   const navigate = useNavigate();
   const { signOut } = useContext(UserContext) as UserContextType;
 
+  function handleClickLogo(){
+    navigate('/');
+  }
+
   function handleClickLogOut(){
     signOut();
     navigate('/');
@@ -25,7 +29,7 @@ function Header(props: Props) {
   return (    
     <Container>
       <Main>
-        <Div><Logo size='small'/></Div>
+        <Div onClick={handleClickLogo}><Logo size='small'/></Div>
         <Icon onClick={handleClickLogOut}><IonIcon icon={logOut}/></Icon>
       </Main>
       <Title><Subtitle>{title}</Subtitle></Title>

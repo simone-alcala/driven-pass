@@ -1,17 +1,19 @@
 import styled from 'styled-components';
 
-interface IProps{
-  color?: string;
-  margin?: string;
-}
-
-export const Main = styled.main `
+export const Container = styled.section `
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const Main = styled.main `
+  width: 800px;
+  height: 100%;
+  display: flex;
   flex-direction: column;
+  padding: 10px;
   font-family: 'Recursive', sans-serif;
   font-size: 18px;
   color: #222222;
@@ -38,19 +40,8 @@ export const Input = styled.input `
 `;
 
 export const Label = styled.label `
-  color: black;
-  margin-top: 15px;
-  margin-bottom: 10px;
-`;
-
-export const Button = styled.button<IProps> `
   width: 280px;
-  height: 40px;  
-  background: ${props => props.color};
-  border: 3px solid ${props => props.color};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: ${props => props.margin};
-  font-size: 18px;
+  color: black;
+  margin: 10px 0 ;
+  text-align: left;
 `;

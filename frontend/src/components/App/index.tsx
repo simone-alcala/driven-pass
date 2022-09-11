@@ -9,11 +9,13 @@ import SignUp from '../../pages/SignUp';
 import SafeNotes from '../../pages/SafeNotes';
 import Network from '../../pages/Network';
 import Credentials from '../../pages/Credentials';
+import AddCredential from '../../pages/AddCredential';
 import Cards from '../../pages/Cards';
 
 import PrivateRoute from '../PrivateRoute';
 
 import './../../assets/styles/reset.css';
+import ShowCredential from '../../pages/ShowCredential';
 
 function App() {
   return (
@@ -49,6 +51,16 @@ function App() {
           <Route path='/credentials' element={ 
             <PrivateRoute>
               <Credentials /> 
+            </PrivateRoute>}
+          />
+          <Route path='/credentials/:id' element={ 
+            <PrivateRoute>
+              <ShowCredential /> 
+            </PrivateRoute>}
+          />
+          <Route path='/credential' element={ 
+            <PrivateRoute>
+              <AddCredential /> 
             </PrivateRoute>}
           />
           <Route path='/cards' element={ 

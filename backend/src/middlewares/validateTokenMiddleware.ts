@@ -10,6 +10,6 @@ export default async function validateToken(req: Request, res: Response, next: N
     throw unauthorized(errorMessage);
   }
   const userId = isValidToken(token.split('Bearer ').join(''), errorMessage);
-  res.locals.loggedUserId = userId;
+  res.locals.loggedUserId = userId ;
   next();  
 }
