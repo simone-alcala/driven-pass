@@ -4,9 +4,10 @@ import jwt from 'jsonwebtoken';
 dotenv.config();
 
 import { User } from '@prisma/client';
+import * as throwError from '../utils/errorUtils';
 import * as repository from '../repositories/userRepository';
 import * as credentials from '../services/credentialService';
-import * as throwError from '../utils/errorUtils';
+import * as safeNotes from '../services/safeNoteService';
 
 const JWT_KEY = process.env.JWT_KEY || '';
 
@@ -55,11 +56,12 @@ export async function findAllDataByUserId(userId: number) {
     throw throwError.unauthorized('Invalid user');
   }
   const totalCredentials = await credentials.totalByUserId(userId);
+  const totalSafeNotes = await safeNotes.totalByUserId(userId);
   return {
     userId,
     totalCredentials,
     totalCards: 0,
     totalNetworks: 0,
-    totalSafeNotes: 0
+    totalSafeNotes
   }
 }
