@@ -5,6 +5,7 @@ import userRouter from './userRouter';
 import credentialRouter from './credentialRouter';
 import safeNoteRouter from './safeNoteRouter';
 import cardRouter from './cardRouter';
+import networkRouter from './networkRouter';
 
 const router = Router();
 
@@ -13,5 +14,6 @@ router.use(userRouter);
 router.use(credentialRouter);
 router.use(safeNoteRouter);
 router.use(cardRouter);
+router.use(networkRouter);
 
 export default router;

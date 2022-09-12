@@ -9,6 +9,7 @@ import * as repository from '../repositories/userRepository';
 import * as credentials from '../services/credentialService';
 import * as safeNotes from '../services/safeNoteService';
 import * as cards from '../services/cardService';
+import * as network from '../services/networkService';;
 
 const JWT_KEY = process.env.JWT_KEY || '';
 
@@ -59,11 +60,12 @@ export async function findAllDataByUserId(userId: number) {
   const totalCredentials = await credentials.totalByUserId(userId);
   const totalSafeNotes = await safeNotes.totalByUserId(userId);
   const totalCards = await cards.totalByUserId(userId);
+  const totalNetworks = await network.totalByUserId(userId);
   return {
     userId,
     totalCredentials,
     totalCards,
-    totalNetworks: 0,
+    totalNetworks,
     totalSafeNotes
   }
 }
