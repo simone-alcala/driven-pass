@@ -31,9 +31,23 @@
 
 ## `Frontend settings:`
 
-### Run
+## `Setup`
+ 
+## Acess:
+ 
+ - ./frontend/src/services/api/api.tsx :
+
+ - LOCAL: Use *axiosConfig* as *DEV*
+ - HEROKU: Use *axiosConfig* as *PROD*
+
+## Run
 
  - *npm install*
  - *npm prisma generate dev*
  - *npm run start*
+# 
+## `ThunderClient`
+
+## Acess:
  
+ - ./backend/src/tests and import the json file

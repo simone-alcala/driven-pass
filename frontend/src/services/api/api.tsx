@@ -1,10 +1,10 @@
 import axios,  { AxiosRequestConfig } from 'axios';
 
-const dev = 'http://localhost:5000'
-const prod = 'https://driven-pass-new.herokuapp.com'
+const DEV = 'http://localhost:5000'
+const PROD = 'https://driven-pass-new.herokuapp.com'
 
 export const axiosConfig = axios.create({
-  baseURL: dev,
+  baseURL: PROD,
   timeout: 3000,
 });
 
