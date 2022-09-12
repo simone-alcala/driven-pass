@@ -7,6 +7,9 @@ export const Container = styled.header `
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  background-color: #fff;
 `;
 
 export const Main = styled.div `

@@ -42,7 +42,26 @@ export const Input = styled.input `
 
 export const Label = styled.label `
   width: 280px;
-  color: black;
+  color: #222222;
   margin: 10px 0 ;
   text-align: left;
+`;
+
+export const Radio = styled.div`
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const RadioOption = styled.input`
+  width: 90px;
+  height: 25px;
+`;
+
+export const RadioLabel = styled.label`
+  color: #222222;
+  margin: 10px 0 ;
+  text-align: center;
+  width: 90px;
 `;

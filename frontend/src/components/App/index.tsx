@@ -18,6 +18,8 @@ import './../../assets/styles/reset.css';
 import ShowCredential from '../../pages/ShowCredential';
 import ShowSafeNote from '../../pages/ShowSafeNote';
 import AddSafeNote from '../../pages/AddSafeNote';
+import ShowCard from '../../pages/ShowCard';
+import AddCard from '../../pages/AddCard';
 
 function App() {
   return (
@@ -84,6 +86,16 @@ function App() {
               <Cards /> 
             </PrivateRoute>
           }/>
+          <Route path='/cards/:id' element={ 
+            <PrivateRoute>
+              <ShowCard /> 
+            </PrivateRoute>}
+          />
+          <Route path='/card' element={ 
+            <PrivateRoute>
+              <AddCard /> 
+            </PrivateRoute>}
+          />
 
         </Routes>
       </BrowserRouter>

@@ -10,6 +10,7 @@ export const Container = styled.section `
   font-size: 18px;
   color: #222222;
   margin-bottom: 80px;
+  padding-top: 150px;
 `;
 
 export const Main = styled.main `

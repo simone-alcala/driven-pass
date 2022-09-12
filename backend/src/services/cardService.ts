@@ -1,33 +1,41 @@
-import * as types from '../types/credentialType';
-import * as repository from '../repositories/credentialRepository';
+import * as types from '../types/cardTypes';
+import * as repository from '../repositories/cardRepository';
 import * as throwError from './../utils/errorUtils';
 import { encryptData } from '../utils/encryptData';
 import { decryptData } from '../utils/decrypData';
 
-export async function insert(data: types.CreateCredentialData) {
+export async function insert(data: types.CreateCardData) {
   data = { 
     ...data, 
     title: data.title.toUpperCase(),
-    password: encryptData(data.password)
+    password: encryptData(data.password),
+    securityCode: encryptData(data.securityCode),
+    holderName: data.holderName.toUpperCase(),
+    type: data.type.toUpperCase() as any
   };
   await getByUserIdAndTitleAndThrow(data.userId, data.title);
   return await repository.insert(data);
 }
 
 export async function getByUserId(userId: number) {
-  const credentials = await repository.getByUserId(userId);
- 
-  return credentials?.map(credential => { 
+  const cards = await repository.getByUserId(userId);
+  
+  return cards?.map(card => { 
     return { 
-      ...credential, 
-      password: decryptData(credential.password)
+      ...card, 
+      password: decryptData(card.password),
+      securityCode: decryptData(card.securityCode)
   }});
 }
 
 export async function getByIdAndUserId(id: number, userId: number) {
   isNanAndFail(id);
   let result = await getByIdAndUserIdAndThrow(id, userId);
-  result = { ...result, password: decryptData(result.password) };
+  result = { 
+    ...result, 
+    password: decryptData(result.password),
+    securityCode: decryptData(result.securityCode) 
+  };
   return result;
 }
 

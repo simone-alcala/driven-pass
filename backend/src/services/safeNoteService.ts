@@ -5,7 +5,7 @@ import * as throwError from './../utils/errorUtils';
 export async function insert(data: types.CreateSafeNoteData) {
   data = { 
     ...data, 
-    title: data.title.toLocaleUpperCase()
+    title: data.title.toUpperCase()
   };
   await getByUserIdAndTitleAndThrow(data.userId, data.title);
   return await repository.insert(data);
