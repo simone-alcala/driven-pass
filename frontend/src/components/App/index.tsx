@@ -7,7 +7,7 @@ import Home from '../../pages/Home';
 import SignIn from '../../pages/SignIn';
 import SignUp from '../../pages/SignUp';
 import SafeNotes from '../../pages/SafeNotes';
-import Network from '../../pages/Network';
+import Networks from '../../pages/Networks';
 import Credentials from '../../pages/Credentials';
 import AddCredential from '../../pages/AddCredential';
 import Cards from '../../pages/Cards';
@@ -20,6 +20,8 @@ import ShowSafeNote from '../../pages/ShowSafeNote';
 import AddSafeNote from '../../pages/AddSafeNote';
 import ShowCard from '../../pages/ShowCard';
 import AddCard from '../../pages/AddCard';
+import ShowNetwork from '../../pages/ShowNetwork';
+import AddNetwork from '../../pages/AddNetwork';
 
 function App() {
   return (
@@ -61,9 +63,19 @@ function App() {
 
           <Route path='/networks' element={ 
             <PrivateRoute>
-              <Network /> 
-            </PrivateRoute>
-          }/>
+              <Networks /> 
+            </PrivateRoute>}
+          />
+          <Route path='/networks/:id' element={ 
+            <PrivateRoute>
+              <ShowNetwork /> 
+            </PrivateRoute>}
+          />
+          <Route path='/network' element={ 
+            <PrivateRoute>
+              <AddNetwork /> 
+            </PrivateRoute>}
+          />
 
           <Route path='/credentials' element={ 
             <PrivateRoute>
