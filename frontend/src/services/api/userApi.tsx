@@ -14,8 +14,13 @@ async function getTotals(token: string): Promise<AxiosResponse<TotalsType>>{
   return await axiosConfig.get('/totals', bearerToken );
 }
 
+async function validateToken(token: string): Promise<AxiosResponse> {
+  return await axiosConfig.post('/token', { token });
+}
+
 const userApi = {
-  getTotals
+  getTotals,
+  validateToken
 };
 
 export default userApi;

@@ -1,6 +1,9 @@
-import React , { useContext }from 'react';
+import React , { useContext, useEffect, useState }from 'react';
 import { UserContext, UserContextType } from './../../contexts/UserContext';
-import { Navigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
+
+import userApi from '../../services/api/userApi';
+import { contractOutline } from 'ionicons/icons';
 
 type Props = {
   children: JSX.Element;
@@ -9,7 +12,12 @@ type Props = {
 
 function PrivateRoute(props: Props) {
   const { children, page } = props;
-  const { token } = useContext(UserContext) as UserContextType;
+  const { token, signOut } = useContext(UserContext) as UserContextType;
+
+  useEffect(() => {
+    const promise = userApi.validateToken(token || '') ;
+    promise.catch(() => signOut() );
+  },[])
 
   if (token && (page === 'SignIn' || page === 'SignUp')) {
     return <Navigate to='/' />
@@ -19,7 +27,7 @@ function PrivateRoute(props: Props) {
     return children;
   }
 
-  return token ? children : <Navigate to='/sign-in' />; 
+  return token ? children : <Navigate to='/sign-in'/>; 
 }
 
 export default PrivateRoute;
